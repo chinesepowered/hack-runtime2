@@ -1,0 +1,33 @@
+{
+  "name": "first-share",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Give a kid their first share. An agent with its own Dynamic wallet buys tokenized stocks on Uniswap v4, by rules a parent sets.",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "compile": "node scripts/compile.mjs",
+    "setup:chain": "node --env-file-if-exists=.env scripts/setup-chain.mjs",
+    "wallet": "node --env-file-if-exists=.env scripts/wallet.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "viem": "^2.21.0"
+  },
+  "optionalDependencies": {
+    "@dynamic-labs-wallet/node-evm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "solc": "^0.8.26",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0"
+  }
+}

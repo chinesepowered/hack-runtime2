@@ -1,0 +1,86 @@
+{
+  "chainId": 84532,
+  "v4": {
+    "poolManager": "0x05E73354cFDd6745C338b50BcFDfA3Aa6fA03408",
+    "positionManager": "0x4b2c77d209d3405f41a037ec6c77f7f5b8e2ca80",
+    "universalRouter": "0x492e6456d9528771018deb9e87ef7750ef184104",
+    "quoter": "0x4a6513c898fe1b2d0e78d3b0e0a4a151589b1cba",
+    "stateView": "0x571291b572ed32ce6751a2cb2486ebee8defb9b4",
+    "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3"
+  },
+  "tokens": {
+    "fsUSD": {
+      "address": "0xa23eac46c8a66cfd9e2d168a628ed1569fe369fd",
+      "decimals": 6,
+      "name": "First Share Test Dollar (not real money)"
+    },
+    "fsAAPL": {
+      "address": "0xe1779080a581881515a61b2f4d2ee6ec7f60ad19",
+      "decimals": 18,
+      "name": "First Share Test Apple (not a security)"
+    },
+    "fsNVDA": {
+      "address": "0x95b423507680144aaa9450f6449a5ab6b01ebeba",
+      "decimals": 18,
+      "name": "First Share Test Nvidia (not a security)"
+    },
+    "fsVOO": {
+      "address": "0xcaec1208dc659f3913d804df7c292bf3ae1e4109",
+      "decimals": 18,
+      "name": "First Share Test S&P 500 (not a security)"
+    }
+  },
+  "pools": {
+    "fsAAPL": {
+      "ticker": "AAPL",
+      "key": {
+        "currency0": "0xa23eac46c8a66cfd9e2d168a628ed1569fe369fd",
+        "currency1": "0xe1779080a581881515a61b2f4d2ee6ec7f60ad19",
+        "fee": 3000,
+        "tickSpacing": 60,
+        "hooks": "0x0000000000000000000000000000000000000000"
+      },
+      "poolId": "0x71f53237ea9cf0cb6bc61301a7692d7072957b584e707a68c78929b245618661",
+      "stockIsToken0": false,
+      "seedPrice": 336.13,
+      "seedPriceAt": "2026-09-18T20:00:02.000Z",
+      "sqrtPriceX96": "4321414710665706394918406159020193",
+      "liquidityAdded": true,
+      "tick": 218146
+    },
+    "fsNVDA": {
+      "ticker": "NVDA",
+      "key": {
+        "currency0": "0x95b423507680144aaa9450f6449a5ab6b01ebeba",
+        "currency1": "0xa23eac46c8a66cfd9e2d168a628ed1569fe369fd",
+        "fee": 3000,
+        "tickSpacing": 60,
+        "hooks": "0x0000000000000000000000000000000000000000"
+      },
+      "poolId": "0x503cf34267beb6f5274c72b4d3e2b2123bf4495caa499608c5abb415f0e53355",
+      "stockIsToken0": true,
+      "seedPrice": 222.27,
+      "seedPriceAt": "2026-09-18T20:00:00.000Z",
+      "sqrtPriceX96": "1181190671620969724875255",
+      "liquidityAdded": true,
+      "tick": -222283
+    },
+    "fsVOO": {
+      "ticker": "VOO",
+      "key": {
+        "currency0": "0xa23eac46c8a66cfd9e2d168a628ed1569fe369fd",
+        "currency1": "0xcaec1208dc659f3913d804df7c292bf3ae1e4109",
+        "fee": 3000,
+        "tickSpacing": 60,
+        "hooks": "0x0000000000000000000000000000000000000000"
+      },
+      "poolId": "0xb5a8b66cbfd7959b95cfc9919a36747bfb29695e7b525a1451a989c62f0df5fd",
+      "stockIsToken0": false,
+      "seedPrice": 701.78,
+      "seedPriceAt": "2026-09-18T20:00:00.000Z",
+      "sqrtPriceX96": "2990742967405988294607587692600359",
+      "liquidityAdded": true,
+      "tick": 210784
+    }
+  }
+}

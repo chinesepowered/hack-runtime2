@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>First Share — slides</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --paper:#fbf7ef; --ink:#23302a; --muted:#6d7a72; --green:#2f6b4f; --coral:#e8735a; --gold:#c9962a; --pink:#ff4fa3; }
+  html, body { margin:0; height:100%; background:var(--paper); color:var(--ink); overflow:hidden;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none;
+    background: radial-gradient(70rem 30rem at 50% -10%, rgba(242,182,50,.2), transparent 70%); }
+  .deck { position:absolute; left:50%; top:50%; width:1600px; height:900px; transform-origin:center; }
+  .slide { position:absolute; inset:0; padding:110px 130px; box-sizing:border-box; display:none; flex-direction:column; justify-content:center; }
+  .slide.on { display:flex; }
+  .eyebrow { font-size:20px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin:0 0 26px; }
+  h1, h2 { font-family: Georgia, "Iowan Old Style", serif; font-weight:400; letter-spacing:-.02em; margin:0; }
+  h1 { font-size:118px; line-height:1; }
+  h2 { font-size:74px; line-height:1.05; margin-bottom:40px; }
+  p.lead { font-size:34px; line-height:1.45; color:var(--muted); max-width:1150px; margin:34px 0 0; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; margin-top:10px; }
+  .stat { background:#fff; border:1px solid rgba(35,48,42,.1); border-radius:28px; padding:38px; }
+  .stat b { display:block; font-family:Georgia,serif; font-weight:400; font-size:96px; line-height:1; }
+  .stat span { display:block; font-size:25px; line-height:1.4; color:var(--muted); margin-top:16px; }
+  .src { font-size:17px; color:var(--muted); margin-top:30px; }
+  .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .box { background:#fff; border:1px solid rgba(35,48,42,.1); border-radius:26px; padding:30px 28px; position:relative; }
+  .box h3 { font-family:Georgia,serif; font-weight:400; font-size:38px; margin:10px 0 12px; }
+  .box p { font-size:22px; line-height:1.45; margin:0 0 16px; }
+  .box code { font-size:17px; color:var(--green); line-height:1.5; display:block; }
+  .n { font-family:Georgia,serif; font-size:48px; color:var(--gold); line-height:1; }
+  .tag { display:inline-block; font-size:17px; letter-spacing:.08em; text-transform:uppercase; padding:6px 14px; border-radius:99px; color:#fff; }
+  .row { display:flex; gap:48px; align-items:center; margin-top:34px; }
+  .sprout { width:120px; height:120px; }
+  ul.big { font-size:32px; line-height:1.6; margin:0; padding-left:1.1em; }
+  ul.big li::marker { color:var(--green); }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide">
+    <p class="eyebrow">Runtime NYC · Uniswap · Dynamic · Bankr</p>
+    <div class="row" style="margin:0 0 30px">
+      <svg class="sprout" viewBox="0 0 24 24"><path d="M12 21v-8" stroke="#2f6b4f" stroke-width="2" stroke-linecap="round"/><path d="M12 13c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z" fill="#4f9a6d"/><path d="M12 14c0-3.2-2.4-5.2-5.6-5.2 0 3.2 2.4 5.2 5.6 5.2z" fill="#e8735a"/></svg>
+    </div>
+    <h1>First Share.</h1>
+    <p class="lead">Give a kid their first stocks. Every Friday, an agent with her own wallet buys tokenized shares on Uniswap v4 — by the rule her parent set.</p>
+  </section>
+
+  <section class="slide">
+    <p class="eyebrow">The problem</p>
+    <h2>Owning a piece of the economy starts at home — or doesn’t.</h2>
+    <div class="stats">
+      <div class="stat"><b style="color:var(--green)">87%</b><span>of adults in households earning $100k+ own stock</span></div>
+      <div class="stat"><b style="color:var(--coral)">28%</b><span>of adults in households earning under $50k do</span></div>
+      <div class="stat"><b style="color:var(--gold)">$1,000</b><span>Treasury now puts in an index fund for every child born 2025–2028</span></div>
+    </div>
+    <p class="src">Gallup, “What Percentage of Americans Own Stock?”, May 5 2025 (combined 2024–25 data) · U.S. Treasury, Jan 28 2026 · IRS IR-2026-31</p>
+  </section>
+
+  <section class="slide">
+    <p class="eyebrow">How it works</p>
+    <h2>An agent with an allowance.</h2>
+    <div class="flow">
+      <div class="box"><div class="n">1</div><h3>The rule</h3><p>The parent sets how much, the split, and when to hold off.</p><code>lib/rules.ts</code></div>
+      <div class="box"><div class="n">2</div><h3>The market</h3><p>Real prices and the week’s move decide buy or skip.</p><code>Yahoo Finance</code></div>
+      <div class="box"><div class="n">3</div><h3>The pool</h3><p>Every buy is priced on Uniswap v4 and refused if the pool drifts from the market.</p><code>V4Quoter · StateView</code></div>
+      <div class="box"><div class="n">4</div><h3>The buy</h3><p>The kid’s own Dynamic wallet signs the swap.</p><code>Dynamic server wallet<br>UniversalRouter V4_SWAP</code></div>
+    </div>
+    <div class="row">
+      <span class="tag" style="background:var(--pink)">Uniswap v4</span>
+      <span class="tag" style="background:var(--green)">Dynamic server wallet</span>
+      <span class="tag" style="background:var(--gold)">Tokenized equities</span>
+      <span class="tag" style="background:#6d7a72">Base Sepolia</span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <p class="eyebrow">Why it matters</p>
+    <h2>The habit is the gift.</h2>
+    <ul class="big">
+      <li>Real ownership, in slices small enough for an allowance</li>
+      <li>A rule a parent can read, and an agent that can’t go past it</li>
+      <li>Every decision shown, every trade on-chain</li>
+      <li>Tokenized stocks trading 24/7 on open rails — the pipe kids’ accounts can run on</li>
+    </ul>
+    <p class="src" style="margin-top:44px">Testnet demo: fsAAPL, fsNVDA and fsVOO are tokenized stand-ins priced from real quotes — not securities, not real money.</p>
+  </section>
+
+</div>
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const deck = document.getElementById('deck');
+  let i = Math.max(0, Math.min(slides.length - 1, (Number(new URLSearchParams(location.search).get('s')) || 1) - 1));
+  function show() { slides.forEach((s, k) => s.classList.toggle('on', k === i)); }
+  function fit() { const s = Math.min(innerWidth / 1600, innerHeight / 900); deck.style.transform = `translate(-50%,-50%) scale(${s})`; }
+  addEventListener('keydown', e => {
+    if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) i = Math.min(slides.length - 1, i + 1);
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) i = Math.max(0, i - 1);
+    show();
+  });
+  addEventListener('resize', fit); fit(); show();
+</script>
+</body>
+</html>

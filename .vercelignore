@@ -1,0 +1,8 @@
+# Never upload local secrets or state; secrets go in as Vercel env vars.
+.env
+.env.*
+!.env.example
+.data/
+demo-out/
+node_modules/
+.next/

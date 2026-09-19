@@ -1,0 +1,5 @@
+# pnpm 11 fails the install unless every dependency build script is explicitly
+# allowed or denied. protobufjs (pulled in by the Dynamic wallet SDK) only runs
+# a version-compatibility check at install time; the app does not need it.
+allowBuilds:
+  protobufjs: false
