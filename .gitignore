@@ -9,3 +9,6 @@ demo-out/
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+.vercel
+.env*
